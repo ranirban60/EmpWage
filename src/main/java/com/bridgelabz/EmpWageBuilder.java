@@ -2,6 +2,11 @@ package com.bridgelabz;
 
 public class EmpWageBuilder {
     public static void main(String[] args) {
+
+            totalEmpWage();
+        }
+
+    private static void totalEmpWage() {
         System.out.println("Welcome to Employee Wage Computation Program ");
         final int IS_FULL_TIME = 1;
         final int IS_PART_TIME = 2;
@@ -41,3 +46,5 @@ public class EmpWageBuilder {
         System.out.println("Wage per month = " +wage_per_month);
     }
 }
+
+
