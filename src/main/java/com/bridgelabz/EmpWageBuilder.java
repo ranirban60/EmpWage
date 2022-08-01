@@ -2,8 +2,7 @@ package com.bridgelabz;
 
 public class EmpWageBuilder {
     public static void main(String[] args) {
-
-            totalEmpWage();
+        totalEmpWage();
         }
 
     private static void totalEmpWage() {
