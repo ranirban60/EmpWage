@@ -10,7 +10,7 @@ public class EmpWageBuilder {
         totalEmpWage("Flipkart",20, 20, 150);
         }
 
-    private static int totalEmpWage(String companyName, int wagePerHr, int maxWorkingDays,int maxWorkingHours) {
+    public static int totalEmpWage(String companyName, int wagePerHr, int maxWorkingDays,int maxWorkingHours) {
         int emp_hr = 0;
         int totalWorkingHrs = 0;
         int totalWorkingDays = 0;
