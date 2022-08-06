@@ -1,30 +1,29 @@
 package com.bridgelabz;
-
-public class EmpWageBuilderArray {
+public class EmpWageBuilderArray implements EmployeeWageComputation {
     public static final int IS_FULL_TIME = 1;
     public static final int IS_PART_TIME = 2;
 
-    private int numOfCompany = 0;
-    private CompanyEmpWage[] companyEmpWageArray;
+     int numOfCompany = 0;
+     CompanyEmpWage[] companyEmpWageArray;
 
     public EmpWageBuilderArray() {
         companyEmpWageArray = new CompanyEmpWage[5];
     }
 
-    private void addCompanyEmpWage(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHours) {
+    public void addCompanyEmpWage(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHours) {
         companyEmpWageArray[numOfCompany] = new CompanyEmpWage(companyName, wagePerHr, maxWorkingDays, maxWorkingHours);
         numOfCompany++;
     }
 
-    private void computeEmpWage() {
+    public void computeEmpWage() {
         for (int i = 0; i < numOfCompany; i++) {
             companyEmpWageArray[i].setTotalEmpWage(this.computeEmpWage(companyEmpWageArray[i]));
             System.out.println(companyEmpWageArray[i]);
         }
     }
 
-    private int computeEmpWage(CompanyEmpWage companyEmpWage) {
-        int emp_hr = 0;
+     int computeEmpWage(CompanyEmpWage companyEmpWage) {
+        int emp_hr = 0 ;
         int totalWorkingHrs = 0;
         int totalWorkingDays = 0;
 
