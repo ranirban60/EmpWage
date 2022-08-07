@@ -6,7 +6,6 @@ import com.bridgelabz.IEmployeeWageComputation;
 import java.util.ArrayList;// Impoprting ArrayList Class
 import java.util.HashMap;//Importing HasMap from Package
 
-
 public class EmpWageBuilder implements IEmployeeWageComputation {
     public static final int IS_FULL_TIME = 1;
     public static final int IS_PART_TIME = 2;
