@@ -5,6 +5,7 @@ interface IEmployeeWageComputation{
     public void computeEmpWage();
     public void companyDailyWage();
 }
+
 public class CompanyEmpWage {
 
      final String companyName;
