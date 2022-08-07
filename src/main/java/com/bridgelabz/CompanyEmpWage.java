@@ -3,14 +3,16 @@ package com.bridgelabz;
 interface IEmployeeWageComputation{
     public void addCompanyEmpWage(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHours);
     public void computeEmpWage();
+    public void companyDailyWage();
 }
 public class CompanyEmpWage {
 
-    public final String companyName;
-    public final int wagePerHr;
-    public final int maxWorkingDays;
-    public final int maxWorkingHours;
-    public int totalEmpWage;
+     final String companyName;
+     final int wagePerHr;
+     final int maxWorkingDays;
+     final int maxWorkingHours;
+     int totalEmpWage;
+
     //Constructor
     public CompanyEmpWage(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHours) {
         this.companyName = companyName;
