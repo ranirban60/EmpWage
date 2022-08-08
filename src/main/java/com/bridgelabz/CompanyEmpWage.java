@@ -3,16 +3,16 @@ package com.bridgelabz;
 interface IEmployeeWageComputation{
     public void addCompanyEmpWage(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHours);
     public void computeEmpWage();
-    public void companyDailyWage();
+    public int getTotalWage(String companyName);
 }
 
 public class CompanyEmpWage {
 
-     final String companyName;
-     final int wagePerHr;
-     final int maxWorkingDays;
-     final int maxWorkingHours;
-     int totalEmpWage;
+     public final String companyName;
+     public final int wagePerHr;
+     public final int maxWorkingDays;
+     public final int maxWorkingHours;
+     public int totalEmpWage;
 
     //Constructor
     public CompanyEmpWage(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHours) {
@@ -29,11 +29,11 @@ public class CompanyEmpWage {
 
     @Override
     public String toString() {
-        System.out.println("                                                             ");
-        System.out.println("* Total Information of " + companyName + " employee");
-        System.out.println("Wage per hour:" + wagePerHr);
-        System.out.println("Maximum working days:" + maxWorkingDays);
-        System.out.println("Maximum working hours:" + maxWorkingHours);
+       // System.out.println("                                                             ");
+        //System.out.println("* Total Information of " + companyName + " employee");
+      //  System.out.println("Wage per hour:" + wagePerHr);
+      //  System.out.println("Maximum working days:" + maxWorkingDays);
+      //  System.out.println("Maximum working hours:" + maxWorkingHours);
         return "Total wage for a month of the Company " + companyName + " is " + totalEmpWage;
     }
 

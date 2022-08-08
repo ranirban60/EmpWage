@@ -1,30 +1,32 @@
-/*Store the Daily Wage of the company along with the Total Wage
-*/
+/*Ability to get the Total Wage when queried by Company
+- Create Method in EmpWageBuilder to get total
+wage by Company
+ */
 
 package com.bridgelabz;
 import com.bridgelabz.IEmployeeWageComputation;
-import java.util.ArrayList;// Impoprting ArrayList Class
-import java.util.HashMap;//Importing HasMap from Package
+
+import java.util.*;
 
 public class EmpWageBuilder implements IEmployeeWageComputation {
     public static final int IS_FULL_TIME = 1;
     public static final int IS_PART_TIME = 2;
-        private int numOfCompany ,index ;
+        private int numOfCompany = 0;
     //ArrayList Declaration
      ArrayList<CompanyEmpWage> companyEmpWageList;
      //HasMap Declaration using variable String = Company Name and Integer is Total Month Wage
-     HashMap<String, Integer> companyToEmpWageMap;
-
+     Map<String, CompanyEmpWage> companyToEmpWageMap;
     //Constructor for EmpWageBuilder Class
     public EmpWageBuilder() {
         companyEmpWageList = new ArrayList<>();
-        companyToEmpWageMap = new HashMap<>();
+        companyToEmpWageMap = new HashMap<>();//HasMap for  Company Wage
+
     }
-    //Assigning to the Array
+    //Assigning to the Array and also in HashMap
     public void addCompanyEmpWage(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHours) {
         CompanyEmpWage companyEmpWage = new CompanyEmpWage(companyName, wagePerHr, maxWorkingDays, maxWorkingHours);
         companyEmpWageList.add(companyEmpWage);
-        companyToEmpWageMap.put(companyName, 0);
+        companyToEmpWageMap.put(companyName, companyEmpWage);
     }
     // Print Company Wage
      public void computeEmpWage() {
@@ -34,18 +36,12 @@ public class EmpWageBuilder implements IEmployeeWageComputation {
             System.out.println(companyEmpWage);
         }
     }
-    public void companyDailyWage(){
-        System.out.println("Daily wage for  the employee is: ");
-        for (String companyName : companyToEmpWageMap.keySet())// Returns a Set view of the keys contained in this map
-        System.out.println(companyName + "company daily wage per emp : " + companyToEmpWageMap.get(companyName));//Get method is used to get the value
-    }
     //Computing Company Wage
      int computeEmpWage(CompanyEmpWage companyEmpWage) {
         int emp_hr = 0 ;
         int totalWorkingHrs = 0;
         int totalWorkingDays = 0;
-
-         while (totalWorkingHrs <= companyEmpWage.maxWorkingHours && totalWorkingDays < companyEmpWage.maxWorkingDays) {
+        while (totalWorkingHrs <= companyEmpWage.maxWorkingHours && totalWorkingDays < companyEmpWage.maxWorkingDays) {
           totalWorkingDays++;
             int attendance = (int) Math.floor(Math.random() * 10) % 3;
             switch (attendance) {
@@ -69,13 +65,17 @@ public class EmpWageBuilder implements IEmployeeWageComputation {
             totalWorkingHrs += emp_hr;
             System.out.println("No of days = " + totalWorkingDays);
             System.out.println("No of working hrs = " + emp_hr);
-            int wage = emp_hr * companyEmpWage.wagePerHr;
-            companyToEmpWageMap.put(companyEmpWage.companyName, wage);//Insert the entry in Map
         }
        return totalWorkingHrs * companyEmpWage.wagePerHr;
     }
+  @Override
+    public  int getTotalWage(String companyName) {
+        return companyToEmpWageMap.get(companyName).totalEmpWage;
+    }
+
     //Starting of Main Method
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         //Welcome Message
         System.out.println("Welcome to Employee Wage Computation Program ");
         //Creating object
@@ -83,7 +83,10 @@ public class EmpWageBuilder implements IEmployeeWageComputation {
         empWageBuilder.addCompanyEmpWage("Amazon", 30, 25, 200);
         empWageBuilder.addCompanyEmpWage("Flipkart", 20, 20, 150);
         empWageBuilder.computeEmpWage();
-        empWageBuilder.companyDailyWage();
+        System.out.println("Enter company name to get TotalWage of ( Amazon, Flipkart) :" );
+        String company = sc.nextLine();
+        int totalWage = empWageBuilder.getTotalWage(company);
+        System.out.println("The Total Wage of employee for " + company + " Company is " + totalWage + " of a month.");
     }
 }
 
